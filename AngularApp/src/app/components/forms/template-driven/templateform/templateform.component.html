@@ -1,0 +1,55 @@
+<div class="container fluid md-3">
+    <h2>Template Driven Forms!</h2>
+
+    <form class="mt-3" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <div class="mb-3">
+            <label for="emailInfo" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="emailInfo" name="emailInfo" #emailInfo="ngModel" minlength="3"
+                ngModel />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="emailInfo" ngModel />
+        </div>
+
+        <div class="mb-3">
+            <h4>Gender</h4>
+            <label class="btn btn-danger m-3">
+                <input type="radio" name="options" value="Male" ngModel /> Male
+            </label>
+            <label class="btn btn-success m-3">
+                <input type="radio" name="options" value="Female" ngModel /> Female
+            </label>
+            <label class="btn btn-warning m-3">
+                <input type="radio" name="options" value="Others" ngModel /> Others
+            </label>
+        </div>
+
+        <div class="mb-3">
+            <h4>
+                <label for="country" class="form-label">Select your country</label>
+            </h4>
+
+            <select name="country" id="country" ngModel>
+                <option value=""></option>
+                <option [ngValue]="eachCountry.id" *ngFor="let eachCountry of countries">
+                    {{ eachCountry.name }}
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <pre>Value : {{ contactForm.value | json }} </pre>
+    <pre>Valid : {{ contactForm.valid }} </pre>
+    <pre>Touched : {{ contactForm.touched }} </pre>
+    <pre>Submitted : {{ contactForm.submitted }} </pre>
+
+    <div>
+        <p>Username level</p>
+        <pre>Value    : {{ emailInfo.value }} </pre>
+        <pre>valid    : {{ emailInfo.valid }} </pre>
+        <pre>invalid  : {{ emailInfo.invalid }} </pre>
+        <pre>touched  : {{ emailInfo.touched }} </pre>
+    </div>
+</div>

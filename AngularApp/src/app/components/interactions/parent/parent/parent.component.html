@@ -1,0 +1,9 @@
+<div class="container m-3">
+  <div>
+    <label for="content ">PARENT Component :- Modify Content</label>
+    <input type="text" name="content" id="content" [(ngModel)]="inputMessage" class="form-control mt-3">
+  </div>
+  PARENT Component  :- This is the message from child :- {{messgaReceivedFromChild}}
+  
+  <app-child [childMessage]="inputMessage" (childOutput)="getChildData($event)"></app-child>
+</div>

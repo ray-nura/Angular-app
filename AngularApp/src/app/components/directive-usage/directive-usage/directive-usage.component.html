@@ -1,0 +1,42 @@
+<div class="container mt-3">
+  <div class="card card-block ccCardHover mb-4 p-3" ccCardHover>Custom direcive Example</div>
+
+  <!-- <div [ngStyle]="{'background-color':'green'}">Welcome to the Angular Directives</div> -->
+  <div [ngStyle]="styleVar">Welcome to the Angular Directives</div>
+
+  <hr />
+  <table class="table table-striped mt-6">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of people">
+        <td>{{ person.name }}</td>
+        <td [ngStyle]="{ fontSize: '20px', color: getColor(person.country) }">
+          {{ person.country }}
+        </td>
+        <td>{{ person.state }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul *ngFor="let person of people">
+    <!-- [ngClass]="{
+      'text-success': person.country === 'UK',
+      'text-danger': person.country === 'Australia',
+      'text-primary': person.country === 'India'
+    }" -->
+
+    <li
+      [class.text-success]="person.country === 'UK'"
+      [class.text-danger]="person.country === 'Australia'"
+      [class.text-primary]="person.country === 'India'"
+    >
+      {{ person.name }} ({{ person.country }})
+    </li>
+  </ul>
+</div>

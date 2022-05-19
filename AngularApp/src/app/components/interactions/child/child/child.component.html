@@ -1,0 +1,5 @@
+<p class="h3 mt-3">CHILD component :- {{ childMessage }}</p>
+<div>
+   <label for="childContent ">CHILD Component :- Emit to Parent Content</label>
+   <input type="text" name="childContent" id="childContent" [(ngModel)]="messageToParent" class="form-control mt-3" (keyup)="emitToParent()" />
+</div>

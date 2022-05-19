@@ -1,0 +1,19 @@
+<div class="container mt-2">
+    <h2>Pipes Example!</h2>
+    <p>Uppercase Example:- {{ exampleContent | uppercase }}</p>
+    <p>Lowercase Example:- :- {{ exampleContent | lowercase }}</p>
+    <p>Date Pipe:-'d/M/y' :- {{ today | date: "d/M/y" }}</p>
+    <p>Date Pipe:- 'shortTime' :- {{ today | date: "shortTime" }}</p>
+    <p>Decimal Pipe:- {{ 454.78787814 | number: "3.4-5" }}</p>
+    <p>JSON Pipe:- {{ person | json }}</p>
+
+    <p>Slice Pipe :- {{ months | slice: 2:6 }}</p>
+
+    <h1>Custom Pipe</h1>
+    <p>
+        <b>Square root of 25 is: {{ 25 | sqrt }}</b>
+    </p>
+    <p>
+        <b>Square root of 729 is: {{ 729 | sqrt }}</b>
+    </p>
+</div>

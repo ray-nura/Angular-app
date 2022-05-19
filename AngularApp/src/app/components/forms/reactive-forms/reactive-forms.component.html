@@ -1,0 +1,48 @@
+<div class="container mt-3">
+    <div>
+        <p>
+            formGroup: The form will be treated as a FormGroup in the component class,
+            so the formGroup directive allows to give a name to the form group.
+        </p>
+        <p>
+            ngSubmit: This is the event that will be triggered upon submission of the
+            form.
+        </p>
+        <p>
+            formControlName: Each form field should have a formControlName directive
+            with a value that will be the name used in the component class.
+        </p>
+    </div>
+
+    <h3>Reactive Forms</h3>
+    <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit(myReactiveForm)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter Name" />
+            <div class="alert alert-danger" role="alert" *ngIf="myReactiveForm.get('name').invalid 
+             && (myReactiveForm.get('name') || myReactiveForm.get('name').dirty )">
+                Please provide a Name
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email" />
+            <div class="alert alert-danger" role="alert" *ngIf="
+                myReactiveForm.get('email').invalid 
+             && (myReactiveForm.get('email') || myReactiveForm.get('email').dirty)">
+                Please provide a Email Address
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Message</label>
+            <input type="text" class="form-control" formControlName="message" placeholder="Message" />
+            <div class="alert alert-danger" role="alert" *ngIf="
+                myReactiveForm.get('message').invalid 
+                 && (myReactiveForm.get('message') || 
+                myReactiveForm.get('message').dirty)">
+             Messages must be at least 15 characters long.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="myReactiveForm.invalid">Submit</button>
+    </form>
+</div>

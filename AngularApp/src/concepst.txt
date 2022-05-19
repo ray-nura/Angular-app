@@ -1,0 +1,71 @@
+Data Interactions :-
+
+Bindings
+    -> Component -> .ts file
+    -> View/Template -> .html file
+    -> Style -> .css file
+
+One Way Data Binding
+--------------------
+
+Interpolation 
+-------------
+    -> Component -> Template
+    {{welcomeMessage}}  -> <p class="m-3">{{welcomeMessage}}</p>
+
+Property Binding
+----------------
+    -> Component    -> Template
+       isDisabled   -> [disabled]="isDisabled"
+    
+Event Binding   
+-------------
+    -> Template -> Component
+    -> (click)="enableEmailField()" -> enableEmailField() -> update data of Component(isDisabled)
+
+Two Way Binding
+    -> Property Binding + Event Binding
+    -> [] + () => [(ngModel)]
+
+Component to Component Interaction
+----------------------------------
+Case 1: Parent to Child
+
+    Parent       -- Child 
+-> inputMessage -- childMessage <-
+
+To receive the data in Child Component
+    @Input()
+    childMessage: any = '';
+
+Case 2: Child to Parent
+--------------------------
+
+Child Component Changes..
+
+1. Add a markup -> input -> 
+    [(ngModel)] ->messageToParent
+2. Add EventEmitter for this variable(messageToParent)
+    @Output()
+    childOutput: EventEmitter<string> = new EventEmitter();
+3. Add keydownchange evnt to the input box
+    (keyup)="emitToParent()"
+    emitToParent(){
+        this.childOutput.emit(this.messageToParent);
+    }
+
+Parent Component Changes...
+---------------------------
+4. Add event hanlder for the event emiited from child
+    (childOutput)="getChildData($event)" -> $event contains the data.
+
+5. Bind this data to some varibale and show it in the markup
+  TS File
+    messgaReceivedFromChild ='';
+    getChildData(data: any){
+        this.messgaReceivedFromChild = data;
+    }
+  HTML File
+    {{messgaReceivedFromChild}}
+
+

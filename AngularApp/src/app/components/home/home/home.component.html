@@ -1,0 +1,23 @@
+<div class="container mt-3">
+  <h5>Property Binding [disbaled]</h5>
+  <p>From Source (Component) -> Destination (Template/HTML)</p>
+
+  <!-- Property Binding [disabled] => isDisabled  -->
+  <div class="form-group">
+    <label for="email">Username: </label>
+    <input
+      [disabled]="isDisabled"
+      type="email"
+      class="form-control"
+      placeholder="Enter your email"
+    />
+  </div>
+
+  <br />
+  <h5>Event Binding (click)</h5>
+  <p>From Source (Template/HTML) -> Destination (Component)</p>
+
+  <button class="btn btn-primary" (click)="enableEmailField()">
+    {{ btnText }}
+  </button>
+</div>

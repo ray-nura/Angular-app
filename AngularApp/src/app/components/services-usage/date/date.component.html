@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <h2>Date Example :- </h2>
+    <p>{{todaysDate}}</p>
+
+    <table class="table table-striped">
+       <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>User Id</th>
+            <th>Title</th>
+            <th>Completed</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr *ngFor="let eachTodo of todos">
+            <td>{{eachTodo.id}}</td>
+            <td>{{eachTodo.userId}}</td>
+            <td>{{eachTodo.title}}</td>
+            <td>{{eachTodo.completed}}</td>
+        </tr>
+       </tbody>
+
+    </table>
+
+
+</div>
